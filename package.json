@@ -15,5 +15,16 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@fontsource-variable/m-plus-2": "^5.0.17",
+    "@fontsource-variable/rubik": "^5.0.22",
+    "astro-seo": "^0.8.3",
+    "eslint": "^9.2.0",
+    "eslint-plugin-astro": "^1.1.2",
+    "eslint-plugin-tailwindcss": "^3.15.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-tailwindcss": "^0.5.14"
+  }
 }
