@@ -6,21 +6,28 @@ import SectionTitle from '../components/SectionTitle.astro'
 import StartBtn from '../components/StartBtn.astro'
 import GitHubRibbon from '../components/GitHubRibbon.astro'
 import Logo from '../assets/logo.svg'
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
 
 const cards: TypeCard[] = [
   {
     title: '端末がカード代わりになる',
+    imageUrl: '/src/assets/gcch_screenshot_4.png',
     body: '発行したカードのQRコードをアプリ内で読み取ることで、同じQRコードを画面上に表示できるようになります。'
   },
   {
     title: 'カードの有効期限を管理できる',
+    imageUrl: '/src/assets/gcch_screenshot_2.png',
     body: 'カードの登録時や再チャージ時に発行日を入力することで、有効期限まであと何日かを簡単に確認できるようになり、Googleカレンダーなどにリマインドを作成することもできます。'
   },
   {
     title: 'インストールでき、オフラインでも使える',
+    imageUrl: '/src/assets/gcch_screenshot_1.png',
     body: '本アプリはPWAとして動作するため、ご利用の端末にインストールして使うことができます。また、カードに関するデータはすべて端末内に保存され、一度インストールが完了すればオフラインで利用することもできます。'
   }
 ]
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.png')
 ---
 
 <Layout title="r1-gcc-holder">
@@ -30,7 +37,7 @@ const cards: TypeCard[] = [
       <div class="mt-6 md:h-[480px] md:flex items-center justify-center md:gap-x-12">
         <div class="flex justify-center">
           <div class="w-24 h-24 md:w-48 md:h-48 p-4 md:p-6 shadow-xl rounded-3xl flex items-center justify-center">
-            <img src={Logo.src} class="h-full">
+            <img src={Logo.src} alt="サービスのロゴ" class="h-full">
           </div>
         </div>
         <div class="text-center mt-4 md:m-0 md:text-left">
@@ -44,12 +51,17 @@ const cards: TypeCard[] = [
       <div class="space-y-8">        
         <section>
           <SectionTitle title="概要" />
+          <div class="mt-4 flex md:justify-center gap-x-4 overflow-scroll">
+            <Image src={images['/src/assets/gcch_screenshot_2.png']()} alt="複数の店舗で発行したカードを一覧できる" class="w-48"></Image>
+            <Image src={images['/src/assets/gcch_screenshot_4.png']()} alt="カードと同じQRコードを表示でき、有効期限などもまとめて確認できる" class="w-48"></Image>
+            <Image src={images['/src/assets/gcch_screenshot_1.png']()} alt="Googleカレンダーなどにリマインドを登録できる" class="w-48"></Image>
+          </div>
           <p class="mt-4 text-sm md:text-base">某アミューズメント施設にて順次導入されている、プリペイド式のカードをより使いやすく、かさばることなく使えることを目指したWebアプリケーションです。</p>
         </section>
         <section>
           <SectionTitle title="特徴" />
           <div class="mt-4 grid md:grid-cols-2 gap-2 md:gap-4">
-            {cards.map((item) => <Card title={item.title} body={item.body} imageUrl=''} />)}
+            {cards.map((item) => <Card title={item.title} imageUrl={item.imageUrl} body={item.body} />)}
             <div class="bg-neutral-100 rounded-md p-6 flex items-center justify-center text-neutral-500">comming soon...</div>
           </div>
         </section>
