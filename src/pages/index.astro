@@ -27,16 +27,16 @@ const cards: TypeCard[] = [
   <main class="">
     <div class="max-w-[960px] mx-auto px-4 font-sans">
       <GitHubRibbon />
-      <div class="h-[480px] flex items-center justify-center gap-x-12">
-        <div class="">
-          <div class="w-48 h-48 p-6 shadow-xl rounded-3xl flex items-center justify-center">
+      <div class="mt-6 md:h-[480px] md:flex items-center justify-center md:gap-x-12">
+        <div class="flex justify-center">
+          <div class="w-24 h-24 md:w-48 md:h-48 p-4 md:p-6 shadow-xl rounded-3xl flex items-center justify-center">
             <img src={Logo.src} class="h-full">
           </div>
         </div>
-        <div class="">
-          <h1 class="text-6xl h-16 font-semibold bg-clip-text text-transparent bg-gradient-to-tr from-red-400 to-primary">r1-gcc-holder</h1>
-          <p class="mt-4 text-xl">かしこく管理で、ゲームをもっと楽しく。</p>
-          <div class="mt-6">
+        <div class="text-center mt-4 md:m-0 md:text-left">
+          <h1 class="text-3xl md:text-6xl md:h-16 font-semibold bg-clip-text text-transparent bg-gradient-to-tr from-red-400 to-primary">r1-gcc-holder</h1>
+          <p class="mt-2 md:mt-4 md:text-xl">かしこく管理で、ゲームをもっと楽しく。</p>
+          <div class="mt-4 md:mt-6">
             <StartBtn />
           </div>
         </div>
@@ -44,18 +44,18 @@ const cards: TypeCard[] = [
       <div class="space-y-8">        
         <section>
           <SectionTitle title="概要" />
-          <p class="mt-4">某アミューズメント施設にて順次導入されている、プリペイド式のカードをより使いやすく、かさばることなく使えることを目指したWebアプリケーションです。</p>
+          <p class="mt-4 text-sm md:text-base">某アミューズメント施設にて順次導入されている、プリペイド式のカードをより使いやすく、かさばることなく使えることを目指したWebアプリケーションです。</p>
         </section>
         <section>
           <SectionTitle title="特徴" />
-          <div class="mt-4 md:grid grid-cols-2 gap-4">
+          <div class="mt-4 grid md:grid-cols-2 gap-2 md:gap-4">
             {cards.map((item) => <Card title={item.title} body={item.body} imageUrl=''} />)}
             <div class="bg-neutral-100 rounded-md p-6 flex items-center justify-center text-neutral-500">comming soon...</div>
           </div>
         </section>
         <section>
           <SectionTitle title="注意事項" />
-          <ul class="px-8 py-6 mt-4 max-w-[720px] list-disc mx-auto space-y-2 border border-primary rounded-md">
+          <ul class="px-8 py-6 mt-4 text-sm md:text-base max-w-[720px] list-disc mx-auto space-y-2 border border-primary rounded-md">
             <li>
               本アプリは元サービスの運営会社側の許諾を得て開発したものではありません。カードに関するシステムの権利等は運営会社に帰属します。
             </li>
