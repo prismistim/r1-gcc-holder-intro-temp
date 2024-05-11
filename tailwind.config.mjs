@@ -1,15 +1,15 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
+import colors from 'tailwindcss/colors'
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     colors: {
+      ...colors,
       primary: '#f43f5e',
       'primary-content': '#262626',
       secondary: '#ddd',
       accent: '#2dd4bf',
-      neutral: '#e5e7eb',
       'base-100': '#f3f4f6',
       info: '#38bdf8',
       success: '#4ade80',
