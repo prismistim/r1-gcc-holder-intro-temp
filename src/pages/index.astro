@@ -8,6 +8,7 @@ import GitHubRibbon from '../components/GitHubRibbon.astro'
 import Logo from '../assets/logo.svg'
 import { Image } from 'astro:assets'
 import type { ImageMetadata } from 'astro'
+import dayjs from 'dayjs'
 
 const cards: TypeCard[] = [
   {
@@ -37,37 +38,73 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.png')
       <div class="mt-6 md:h-[480px] md:flex items-center justify-center md:gap-x-12">
         <div class="flex justify-center">
           <div class="w-24 h-24 md:w-48 md:h-48 p-4 md:p-6 shadow-xl rounded-3xl flex items-center justify-center">
-            <img src={Logo.src} alt="サービスのロゴ" class="h-full">
+            <img src={Logo.src} alt="サービスのロゴ" class="h-full" />
           </div>
         </div>
         <div class="text-center mt-4 md:m-0 md:text-left">
-          <h1 class="text-3xl md:text-6xl md:h-16 font-semibold bg-clip-text text-transparent bg-gradient-to-tr from-red-400 to-primary">r1-gcc-holder</h1>
+          <h1
+            class="text-3xl md:text-6xl md:h-16 font-semibold bg-clip-text text-transparent bg-gradient-to-tr from-red-400 to-primary"
+          >
+            r1-gcc-holder
+          </h1>
           <p class="mt-2 md:mt-4 md:text-xl">かしこく管理で、ゲームをもっと楽しく。</p>
           <div class="mt-4 md:mt-6">
             <StartBtn />
           </div>
         </div>
       </div>
-      <div class="space-y-8">        
+      <div class="space-y-8">
         <section>
           <SectionTitle title="概要" />
           <div class="mt-4 flex md:justify-center gap-x-4 overflow-scroll">
-            <Image src={images['/src/assets/gcch_screenshot_2.png']()} alt="複数の店舗で発行したカードを一覧できる" class="w-48"></Image>
-            <Image src={images['/src/assets/gcch_screenshot_4.png']()} alt="カードと同じQRコードを表示でき、有効期限などもまとめて確認できる" class="w-48"></Image>
-            <Image src={images['/src/assets/gcch_screenshot_1.png']()} alt="Googleカレンダーなどにリマインドを登録できる" class="w-48"></Image>
+            <Image
+              src={images['/src/assets/gcch_screenshot_2.png']()}
+              alt="複数の店舗で発行したカードを一覧できる"
+              loading="eager"
+              class="w-48"
+            />
+            <Image
+              src={images['/src/assets/gcch_screenshot_4.png']()}
+              alt="カードと同じQRコードを表示でき、有効期限などもまとめて確認できる"
+              loading="eager"
+              class="w-48"
+            />
+            <Image
+              src={images['/src/assets/gcch_screenshot_1.png']()}
+              alt="Googleカレンダーなどにリマインドを登録できる"
+              loading="eager"
+              class="w-48"
+            />
           </div>
-          <p class="mt-4 text-sm md:text-base">某アミューズメント施設にて順次導入されている、プリペイド式のカードをより使いやすく、かさばることなく使えることを目指したWebアプリケーションです。</p>
+          <p class="mt-4 text-sm md:text-base">
+            某アミューズメント施設にて順次導入されている、プリペイド式のカードをより使いやすく、かさばることなく使えることを目指したWebアプリケーションです。
+          </p>
         </section>
         <section>
           <SectionTitle title="特徴" />
           <div class="mt-4 grid md:grid-cols-2 gap-2 md:gap-4">
             {cards.map((item) => <Card title={item.title} imageUrl={item.imageUrl} body={item.body} />)}
-            <div class="bg-neutral-100 rounded-md p-6 flex items-center justify-center text-neutral-500">comming soon...</div>
+            <div class="bg-neutral-100 rounded-md p-6 flex items-center justify-center text-neutral-500">
+              comming soon...
+            </div>
           </div>
+          <p class="mt-4 text-neutral-400">
+            PWAとしてインストールする方法については
+            <a
+              href="https://web.dev/learn/pwa/progressive-web-apps?hl=ja#mobile_devices"
+              target="_blank"
+              class="font-semibold border-b-2 hover:text-primary hover:border-primary"
+            >
+              こちら
+            </a>
+            を参考にしてください。
+          </p>
         </section>
         <section>
           <SectionTitle title="注意事項" />
-          <ul class="px-8 py-6 mt-4 text-sm md:text-base max-w-[720px] list-disc mx-auto space-y-2 border border-primary rounded-md">
+          <ul
+            class="px-8 py-6 mt-4 text-sm md:text-base max-w-[720px] list-disc mx-auto space-y-2 border border-primary rounded-md"
+          >
             <li>
               本アプリは元サービスの運営会社側の許諾を得て開発したものではありません。カードに関するシステムの権利等は運営会社に帰属します。
             </li>
@@ -82,11 +119,19 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.png')
         </section>
         <section>
           <div class="text-center">
-            <StartBtn></StartBtn>
+            <StartBtn />
           </div>
         </section>
       </div>
     </div>
   </main>
-  <footer class="py-6 mt-8 text-center bg-neutral-200 text-neutral-500">©2024 snowsphere</footer>
+  <footer class="py-6 mt-8 text-center bg-neutral-200 text-neutral-500">
+    <div>
+      ©{dayjs().format('YYYY')}
+      <a href="https://portal.snowsphere.net/" target="_blank">snowsphere</a>
+    </div>
+    <div>
+      #gcch_app
+    </div>
+  </footer>
 </Layout>
